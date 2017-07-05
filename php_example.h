@@ -12,11 +12,9 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:                                                              |
+  | Author: Antony Dovgal                                                |
   +----------------------------------------------------------------------+
 */
-
-/* $Id$ */
 
 #ifndef PHP_EXAMPLE_H
 #define PHP_EXAMPLE_H
@@ -24,39 +22,7 @@
 extern zend_module_entry example_module_entry;
 #define phpext_example_ptr &example_module_entry
 
-#define PHP_EXAMPLE_VERSION "0.1.0" /* Replace with version number for your extension */
-
-#ifdef PHP_WIN32
-#	define PHP_EXAMPLE_API __declspec(dllexport)
-#elif defined(__GNUC__) && __GNUC__ >= 4
-#	define PHP_EXAMPLE_API __attribute__ ((visibility("default")))
-#else
-#	define PHP_EXAMPLE_API
-#endif
-
-#ifdef ZTS
-#include "TSRM.h"
-#endif
-
-/*
-  	Declare any global variables you may need between the BEGIN
-	and END macros here:
-
-ZEND_BEGIN_MODULE_GLOBALS(example)
-	zend_long  global_value;
-	char *global_string;
-ZEND_END_MODULE_GLOBALS(example)
-*/
-
-/* Always refer to the globals in your function as EXAMPLE_G(variable).
-   You are encouraged to rename these macros something shorter, see
-   examples in any other php module directory.
-*/
-#define EXAMPLE_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(example, v)
-
-#if defined(ZTS) && defined(COMPILE_DL_EXAMPLE)
-ZEND_TSRMLS_CACHE_EXTERN()
-#endif
+#define PHP_EXAMPLE_VERSION "0.1.0"
 
 #endif	/* PHP_EXAMPLE_H */
 
