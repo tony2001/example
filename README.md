@@ -32,7 +32,7 @@ Use your PHP packages (you'll probably need to install php-devel package) or bui
 # phpize
 # ./configure --with-php-config=/path/to/your/php-config
 # make install
-# php example.php
+# php example.php <-- just to check that it's working ok
 ````
 This will compile and install example.so as a dynamic extension.
 
