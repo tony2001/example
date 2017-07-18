@@ -30,32 +30,16 @@
 PHP_FUNCTION(confirm_example_compiled)
 {
 	char *arg = NULL;
-	size_t arg_len, len;
+	size_t arg_len;
 	zend_string *strg;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS(), "s", &arg, &arg_len) == FAILURE) {
 		return;
 	}
 
-	strg = strpprintf(0, "Congratulations! You have successfully modified ext/%.78s/config.m4. Module %.78s is now compiled into PHP.", "example", arg);
+	strg = strpprintf(0, "Congratulations! You have successfully modified ext/%s/config.m4. Module %s is now compiled into PHP.", "example", arg);
 
 	RETURN_STR(strg);
-}
-/* }}} */
-
-/* {{{ PHP_MINIT_FUNCTION
- */
-PHP_MINIT_FUNCTION(example)
-{
-	return SUCCESS;
-}
-/* }}} */
-
-/* {{{ PHP_MSHUTDOWN_FUNCTION
- */
-PHP_MSHUTDOWN_FUNCTION(example)
-{
-	return SUCCESS;
 }
 /* }}} */
 
@@ -84,10 +68,10 @@ zend_module_entry example_module_entry = {
 	STANDARD_MODULE_HEADER,
 	"example",
 	example_functions,
-	PHP_MINIT(example),
-	PHP_MSHUTDOWN(example),
-	NULL,
-	NULL,
+	NULL, //MINIT
+	NULL, //MSHUTDOWN
+	NULL, //RINIT
+	NULL, //RSHUTDOWN
 	PHP_MINFO(example),
 	PHP_EXAMPLE_VERSION,
 	STANDARD_MODULE_PROPERTIES
